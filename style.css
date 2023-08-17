@@ -24,8 +24,16 @@ body {
 button {
     color: white;
     background-color: black;
+    border-style: solid;
+    border-color: white;
+    box-shadow: inset;
 
     padding: 32px 64px;
+}
+
+button:hover {
+    color: black;
+    background-color: white;;
 }
 
 h1 {
