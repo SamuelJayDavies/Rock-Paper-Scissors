@@ -1,0 +1,38 @@
+body {
+    background-color: black;
+}
+
+.header {
+    text-align: center;
+
+    color: white;
+    font-size: 3rem;
+}
+
+.decision-container{
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 4rem;
+}
+
+.decision {
+    display: flex;
+    gap: 2rem;
+}
+
+button {
+    color: white;
+    background-color: black;
+
+    padding: 32px 64px;
+}
+
+h1 {
+    color: white;
+}
+
+.results-container {
+    display: flex;
+    justify-content: center;
+}

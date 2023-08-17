@@ -1,80 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+
 <body>
-    <script>
-        let playerWins = 0;
-        let computerWins = 0;
+    <div class="header">
+        <h1>Rock, Paper, Scissors</h1>
+    </div>
 
-        function getComputerChoice() {
-            let randNum = Math.floor(Math.random() * 3);
-            if(randNum == 0) {
-                return "rock";
-            } else if(randNum == 1) {
-                return "paper";
-            } else {
-                return "scissors";
-            }
-        }
+    <div class="decision-container">
+        <div class="decision">
+            <button value="rock" class="decisionBtn" id="rockBtn">Rock</button>
+            <button value="paper" class="decisionBtn" id="paperBtn">Paper</button>
+            <button value="scissors" class="decisionBtn" id="scissorsBtn">Scissors</button>
+        </div>
+    </div>
 
-        function getUserChoice() {
-            let choice = prompt("Rock, Paper or Scissors?")
-            return choice;
-        }
-
-        function playRound(playerChoice, computerChoice) {
-            let playerDecision = playerChoice.toLowerCase();
-            
-            if(playerChoice == computerChoice) {
-                console.log("Draw");
-            } else if(playerChoice == "rock") {
-                if(computerChoice == "scissors") {
-                    playerWins++;
-                    console.log("Player Wins: Rock beats Scissors!");
-                } else {
-                    computerWins++;
-                    console.log("Computer Wins: Paper beats Rock!");
-                }
-            } else if(playerChoice == "paper") {
-                if(computerChoice == "rock") {
-                    playerWins++;
-                    console.log("Player Wins: Paper beats Rock!");
-                } else {
-                    computerWins++;
-                    console.log("Computer Wins: Scissors beats Paper!");
-                }
-            } else {
-                if(computerChoice == "paper") {
-                    playerWins++;
-                    console.log("Player Wins: Scissors beats Paper!");
-                } else {
-                    computerChoice++;
-                    console.log("Computer Wins: Rock beats Scissors");
-                }
-            }
-        }
-
-        function game() {
-            for(let i=0; i<5; i++) {
-
-                playRound(getUserChoice(), getComputerChoice());
-            }
-
-            if(playerWins > computerWins) {
-                console.log("Player Wins!");
-            } else {
-                console.log("Computer Wins!");
-            }
-
-            playerWins = 0;
-            computerWins = 0;
-        }
-
-        game();
-    </script>
+    <div class="results-container">
+        <div class="results">
+            <h1 id="resultsHeading"></h1>
+        </div>
+    </div>
 </body>
+
 </html>
