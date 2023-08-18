@@ -10,22 +10,38 @@
 </head>
 
 <body>
-    <div class="header">
-        <h1>Rock, Paper, Scissors</h1>
-    </div>
+    <div class="main-container">
+        <div class="header">
+            <h1>Rock, Paper, Scissors</h1>
+            <ul>
+                <li id="playerScore">Player Score: 0</li>
+                <li id="computerScore">Computer Score: 0</li>
+            </ul>
+        </div>
 
-    <div class="decision-container">
-        <div class="decision">
-            <button value="rock" class="decisionBtn" id="rockBtn">Rock</button>
-            <button value="paper" class="decisionBtn" id="paperBtn">Paper</button>
-            <button value="scissors" class="decisionBtn" id="scissorsBtn">Scissors</button>
+        <div class="game-container">
+            <div class="decision-container">
+                <div class="decision">
+                    <button value="rock" class="decisionBtn" id="rockBtn">Rock</button>
+                    <button value="paper" class="decisionBtn" id="paperBtn">Paper</button>
+                    <button value="scissors" class="decisionBtn" id="scissorsBtn">Scissors</button>
+                </div>
+            </div>
+
+            <div class="results-container">
+                <div class="match-up">
+                    <img id="playerImg">
+                    <h1 id="match-up-heading"></h1>
+                    <img id="computerImg">
+                </div>
+                <div class="results">
+                    <h1 id="resultsHeading"></h1>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="results-container">
-        <div class="results">
-            <h1 id="resultsHeading"></h1>
-        </div>
+    <div class="footer">
+        <p>Icons provided by flaticon: https://www.flaticon.com/</p>
     </div>
 </body>
 

@@ -3,13 +3,16 @@ const paperBtn = document.querySelector("#paperBtn");
 const scissorsBtn = document.querySelector("#scissorsBtn");
 
 let resultsHeading = document.querySelector("#resultsHeading");
+let matchUpHeading = document.querySelector("#match-up-heading");
+
+let playerImg = document.querySelector("#playerImg");
+let computerImg = document.querySelector("#computerImg");
+
+let playerScore = document.querySelector("#playerScore");
+let computerScore = document.querySelector("#computerScore");
 
 let playerWins = 0;
 let computerWins = 0;
-
-rockBtn.addEventListener("click", () => {
-    playRound(rockBtn.getAttribute("value"), getComputerChoice());
-});
 
 const btns = document.querySelectorAll(".decisionBtn");
 
@@ -33,9 +36,20 @@ function getUserChoice() {
     return choice;
 }
 
-function playRound(playerChoice, computerChoice) {
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function playRound(playerChoice, computerChoice) {
+    computerImg.removeAttribute("src");
+    matchUpHeading.textContent = "";
+    resultsHeading.textContent = "";
+    playerImg.setAttribute("src", playerChoice + "Png.png");
+    matchUpHeading.textContent = "vs";
+    await sleep(1000);
+    computerImg.setAttribute("src", computerChoice + "Png.png");
+    await sleep(500);
     let playerDecision = playerChoice.toLowerCase();
-    console.log("test");
 
     if (playerChoice == computerChoice) {
         resultsHeading.textContent = "Draw";
@@ -45,7 +59,7 @@ function playRound(playerChoice, computerChoice) {
             resultsHeading.textContent = "Player Wins: Rock beats Scissors!";
         } else {
             computerWins++;
-            resultsHeading.textContent = "Player Wins: Paper beats Rock!";
+            resultsHeading.textContent = "Computer Wins: Paper beats Rock!";
         }
     } else if (playerChoice == "paper") {
         if (computerChoice == "rock") {
@@ -60,27 +74,24 @@ function playRound(playerChoice, computerChoice) {
             playerWins++;
             resultsHeading.textContent = "Player Wins: Scissors beats Paper!";
         } else {
-            computerChoice++;
+            computerWins++;
             resultsHeading.textContent = "Computer Wins: Rock beats Scissors";
         }
     }
-
-    console.log(resultsHeading.textContent);
     
+    playerScore.textContent = "Player Score: " + playerWins;
+    computerScore.textContent = "Computer Score: " + computerWins;
+
+    if(playerWins == 5) {
+        resultsHeading.textContent = "You won, select an option to start again";
+        resetScore();
+    } else if(computerWins == 5) {
+        resultsHeading.textContent = "You lose, select an option to start again";
+        resetScore();
+    }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-
-        playRound(getUserChoice(), getComputerChoice());
-    }
-
-    if (playerWins > computerWins) {
-        resultsHeading.textContent = "Player Wins!";
-    } else {
-        resultsHeading.textContent = "Computer Wins!";
-    }
-
+function resetScore() {
     playerWins = 0;
     computerWins = 0;
 }
